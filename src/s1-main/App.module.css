@@ -1,19 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 .App {
     --header_height: 60px;
     width: 800px;
-    background: #cccya;
     margin: 0 auto;
 }
 
 .hw {
     padding: 10px;
-    background: #DDEEFF;
     border-radius: 3px;
 }
 
 .hwTitle {
     font-weight: bold;
     font-size: 20px;
+    margin-bottom: 40px;
 }
 
 #hw1{
