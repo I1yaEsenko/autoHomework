@@ -10,22 +10,24 @@ type GreetingContainerPropsType = {
 export const pureAddUser = (name: string, setError: Dispatch<SetStateAction<string>>, setName: Dispatch<SetStateAction<string>>, addUserCallback: (name: string) => void) => {
     // если имя пустое - показать ошибку, иначе - добавить юзера и очистить инпут
     if (name.trim() === '') {
-        setError('Ошибка! Введите имя' +
+        setError('Ошибка! Введите имя1' +
             '!')
     } else {
-        addUserCallback(name)
+        addUserCallback(name.trim())
         setName('')
+
     }
 
 }
 
 export const pureOnBlur = (name: string, setError: Dispatch<SetStateAction<string>>) => {
     if (name.trim() === '') {
-        setError('Ошибка! Введите имя!')
+        setError('Ошибка! Введите имя!2')
+
     }// если имя пустое - показать ошибку
 }
 
-export const pureOnEnter = (e: KeyboardEvent, addUser: (name: string) => void) => {
+export const pureOnEnter = (e: KeyboardEvent<HTMLInputElement>, addUser: (name: string) => void) => {
     // если нажата кнопка Enter - добавить
     if (e.key === 'Enter') {
         addUser('')
@@ -46,8 +48,9 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
 
     const setNameCallback = (e: ChangeEvent<HTMLInputElement>) => { // need to fix any
         setName(e.currentTarget.value) // need to fix
-        error && setError('Ошибка! Введите имя!')
+        error && setError('Ошибка! Введите имя!3')
         setError('')
+
     }
     const addUser = () => {
         pureAddUser(name, setError, setName, addUserCallback)
@@ -57,12 +60,12 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
         pureOnBlur(name, setError)
     }
 
-    const onEnter = (e: KeyboardEvent) => {
+    const onEnter = (e: KeyboardEvent<HTMLInputElement>) => {
         pureOnEnter(e, addUser)
     }
 
     const totalUsers = users.length // need to fix
-    const lastUserName = users.length > 0 ? users[users.length - 1].name : 'Список пуст!'
+    const lastUserName = users.length > 0 ? users[users.length - 1].name : false
 
 
 
