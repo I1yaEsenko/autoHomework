@@ -11,7 +11,6 @@ function Junior() {
             {/*<HW7 />*/}
             {/*<HW8 />*/}
             {/*<HW9 />*/}
-        {/*    test github commit */}
         </div>
     )
 }
