@@ -1,4 +1,7 @@
 .spanBlock {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .span {
@@ -8,4 +11,5 @@
 }
 
 .pen {
+    margin-right: 10px;
 }
