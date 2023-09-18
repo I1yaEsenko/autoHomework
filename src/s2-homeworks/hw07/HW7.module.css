@@ -1,2 +1,12 @@
 .container {
+    display: flex;
+}
+
+.superSelect{
+
+    margin-right: 160px;
+}
+
+.superRadio {
+
 }

@@ -1,7 +1,14 @@
 .select {
+    appearance: none;
+    width: 180px;
+    font-size: 14px;
+    line-height: 18px;
+    padding: 6px 25px 6px 10px;
+    cursor: pointer;
 }
 
 .select:focus {
+    border-radius:0;
 }
 
 
