@@ -1,5 +1,4 @@
 .select {
-    appearance: none;
     width: 180px;
     font-size: 14px;
     line-height: 18px;
@@ -11,6 +10,11 @@
     border-radius:0;
 }
 
-
+.option{
+    border-radius: 0;
+    cursor: pointer;
+    font-size: 14px;
+}
 .option:hover {
+    background-color: #c3c3c3;
 }
