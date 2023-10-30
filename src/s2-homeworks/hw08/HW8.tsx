@@ -81,15 +81,13 @@ const HW8 = () => {
                             Check 18+
                         </SuperButton>
                     </div>
-
                     <table id={'hw8-users'} className={s.users}>
                         <thead className={s.thead}>
-                        <tr>
+                        <tr className={s.infoRow}>
                             <td className={s.nameCol}>Name</td>
                             <td className={s.ageCol}>Age</td>
                         </tr>
                         </thead>
-
                         <tbody>{finalPeople}</tbody>
                     </table>
                 </div>

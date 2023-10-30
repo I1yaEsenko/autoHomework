@@ -1,3 +1,19 @@
 .loader {
     /*свг и/или анимация*/
+    animation: rotate 2s linear infinite;
+
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#hw10-button-start-loading {
+    width: 150px;
+    height: 60px;
 }
