@@ -2,7 +2,16 @@
 }
 
 .wrapper {
+    display: flex;
+    align-items: center;
 }
 
 .number {
+    color: #000;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 20px; /* 125% */
+    margin: 12px;
 }
