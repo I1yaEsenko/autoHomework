@@ -19,30 +19,81 @@ const HW13 = () => {
     const [text, setText] = useState('')
     const [info, setInfo] = useState('')
     const [image, setImage] = useState('')
-
+    const [loading, setLoading] =useState(false)
     const send = (x?: boolean | null) => () => {
-        const url =
-            x === null
-                ? 'https://xxxxxx.ccc' // имитация запроса на не корректный адрес
-                : 'https://samurai.it-incubator.io/api/3.0/homework/test'
+        const url = x === null
+            ? 'https://xxxxxx.ccc' // имитация запроса на не корректный адрес
+            : 'https://samurai.it-incubator.io/api/3.0/homework/test'
 
         setCode('')
         setImage('')
         setText('')
         setInfo('...loading')
+        setLoading(true)
+        if (x === true) {
+          return  axios
+                .post(url, {success: x})
+                .then((res) => {
+                    setCode('Код 200!')
+                    setImage(success200)
+                    setText('...всё ок)')
+                    setInfo('код 200 - обычно означает что скорее всего всё ок)')
+                    return res.data
+                })
+              .finally(()=> {
+                  setLoading(false)
+              })
+        } else if (x === undefined) {
+          return   axios
+                .post(url, {success: x})
+                .then((res) => {
 
-        axios
-            .post(url, {success: x})
-            .then((res) => {
-                setCode('Код 200!')
-                setImage(success200)
-                // дописать
+                    return res.data
+                })
+              .catch((e) => {
+                  setCode('Ошибка 400!')
+                  setImage(error400)
+                  setText('Ты не отправил success в body вообще!')
+                  setInfo('ошибка 400 - обычно означает что скорее всего фронт отправил что-то не то на бэк!')
+              })
+              .finally(()=> {
+                  setLoading(false)
+              })
 
-            })
-            .catch((e) => {
-                // дописать
+        } else if
+        (x === false) {
+           return axios
+                .post(url, {success: x})
+                .then((res) => {
+                    return res.data
+                })
+               .catch((e) => {
+                   setCode('Ошибка 500!')
+                   setImage(error500)
+                   setText('эмитация ошибки на сервере')
+                   setInfo('ошибка 500 - обычно означает что что-то сломалось на сервере, например база данных)')
+               })
+               .finally(()=> {
+                   setLoading(false)
+               })
+        } else {
+            axios
+                .post(url, {success: x})
+                .then((res) => {
 
-            })
+                })
+
+                .catch((e) => {
+                    setCode('Error')
+                    setImage(errorUnknown)
+                    setText('Network Error')
+                    setInfo('Axios Error')
+                })
+                .finally(()=> {
+                    setLoading(false)
+                })
+        }
+
     }
 
     return (
@@ -56,7 +107,7 @@ const HW13 = () => {
                         onClick={send(true)}
                         xType={'secondary'}
                         // дописать
-
+                        disabled={loading}
                     >
                         Send true
                     </SuperButton>
@@ -65,7 +116,7 @@ const HW13 = () => {
                         onClick={send(false)}
                         xType={'secondary'}
                         // дописать
-
+                        disabled={loading}
                     >
                         Send false
                     </SuperButton>
@@ -74,7 +125,7 @@ const HW13 = () => {
                         onClick={send(undefined)}
                         xType={'secondary'}
                         // дописать
-
+                        disabled={loading}
                     >
                         Send undefined
                     </SuperButton>
@@ -83,7 +134,7 @@ const HW13 = () => {
                         onClick={send(null)} // имитация запроса на не корректный адрес
                         xType={'secondary'}
                         // дописать
-
+                        disabled={loading}
                     >
                         Send null
                     </SuperButton>

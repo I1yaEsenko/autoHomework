@@ -5,6 +5,7 @@ import React, {
    HTMLAttributes,
 } from 'react'
 import s from './SuperRadio.module.css'
+import {light} from "@mui/material/styles/createPalette";
 
 type DefaultRadioPropsType = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,
@@ -36,8 +37,7 @@ const SuperRadio: React.FC<SuperRadioPropsType> = ({
 
    const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
       onChange && onChange(e)
-      onChangeOption && onChangeOption(e.currentTarget.value)
-
+      onChangeOption && onChangeOption(e.target.value)
    }
    const finalRadioClassName = s.radio + (className ? ' ' + className : '')
    const spanClassName = s.span + (spanProps?.className ? ' ' + spanProps.className : '')

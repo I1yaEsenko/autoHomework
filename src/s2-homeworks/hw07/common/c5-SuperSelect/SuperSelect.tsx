@@ -30,7 +30,7 @@ const SuperSelect: React.FC<SuperSelectPropsType> = ({
                   id={'hw7-option-' + o.value}
                   className={s.option}
                   key={o.id}
-                  value={o.id}
+                  value={o.value}
               >
                   {o.value}
               </option>
