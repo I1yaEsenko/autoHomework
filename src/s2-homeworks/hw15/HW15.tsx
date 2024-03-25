@@ -5,7 +5,7 @@ import axios from 'axios'
 import SuperPagination from './common/c9-SuperPagination/SuperPagination'
 import {useSearchParams} from 'react-router-dom'
 import SuperSort from './common/c10-SuperSort/SuperSort'
-
+import loading from './common/loading.svg'
 /*
 * 1 - дописать SuperPagination
 * 2 - дописать SuperSort
@@ -56,6 +56,7 @@ const HW15 = () => {
 				if (res) {
 					setTechs(res.data.techs)
 					setTotalCount(res.data.totalCount)
+
 				}
 				setLoading(false)
 				// setTechs()
@@ -101,11 +102,11 @@ const HW15 = () => {
 	))
 
 	return (
-		<div id={'hw15'}>
+		<div id={'hw15'} className={s.main}>
 			<div className={s2.hwTitle}>Homework #15</div>
 
 			<div className={s2.hw}>
-				{idLoading && <div id={'hw15-loading'} className={s.loading}>Loading...</div>}
+
 
 				<SuperPagination
 					page={page}
@@ -113,20 +114,24 @@ const HW15 = () => {
 					totalCount={totalCount}
 					onChange={onChangePagination}
 				/>
+				<div className={s.wrapper}>
+					{idLoading && <div id={'hw15-loading'} className={s.loading}>
+                        <img src={loading} className={s.loadingAnimate}/>
+                    </div>}
+					<div className={s.rowHeader}>
+						<div className={s.techHeader}>
+							Специализация:
+							<SuperSort sort={sort} value={'tech'} onChange={onChangeSort}/>
+						</div>
 
-				<div className={s.rowHeader}>
-					<div className={s.techHeader}>
-						tech
-						<SuperSort sort={sort} value={'tech'} onChange={onChangeSort}/>
+						<div className={s.developerHeader}>
+							Разработчик:
+							<SuperSort sort={sort} value={'developer'} onChange={onChangeSort}/>
+						</div>
 					</div>
 
-					<div className={s.developerHeader}>
-						developer
-						<SuperSort sort={sort} value={'developer'} onChange={onChangeSort}/>
-					</div>
+					{mappedTechs}
 				</div>
-
-				{mappedTechs}
 			</div>
 		</div>
 	)

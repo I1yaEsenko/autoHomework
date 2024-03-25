@@ -2,13 +2,25 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    margin-bottom: 36px;
 }
 
-.text1 {
+.select{
+    border: 1px solid #ecebeb;
+    border-radius: 2px;
+    width: 39px;
+    height: 24px;
+    font-size: 14px;
+    text-align: center;
+    color: #0d0b0c;
+    padding: 4px 0;
 
 }
 
-.text2 {
-
+.text1, .text2  {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    color: #0d0b0c;
 }
+
